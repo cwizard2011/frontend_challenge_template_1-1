@@ -1,0 +1,44 @@
+.filter-cards-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-top: 50px;
+  box-shadow: 0.5rem 0.5rem 3rem rgba(0,0,0,0.2);
+  width: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-radius: 3px;
+  position: absolute;
+}
+
+.filter-cards-button {
+  background-color: #f7436b;
+  border: none;
+  color: #FFF;
+  font-family: 'Montserrat';
+  width: 250px;
+  padding-left: 15px;
+}
+
+.radio-check-wrapper {
+  margin-top: 5px;
+
+  & label {
+    margin-left: 50px;
+    font-family: 'Montserrat';
+    font-size: 12px;
+  }
+
+  & input {
+    left: 40px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .filter-cards-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

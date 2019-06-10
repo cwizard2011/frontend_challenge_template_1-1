@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.deals {
+  display: flex;
+}
+
+.fontAwesome {
+  font-family: FontAwesome;
+}
+
+.no-product-found {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+  & p {
+    font-family: 'Montserrat';
+    margin-top: 2px;
+    font-size: 25px
+  }
+}
+
+.search-bar-style {
+  margin-top: 5px;
+  border-radius: 20px;
+  width: 500px;
+  margin-right: 80px;
+  padding-left: 20px;
+  outline: none !important;
+}
+
+.required-field-style {
+  color: red;
+}
+
+@media only screen and (max-width: 767px) {
+  .search-bar-style {
+    width: 200px;
+  }
+}

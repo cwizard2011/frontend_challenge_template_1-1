@@ -1,0 +1,62 @@
+.profile-user-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 45%;
+  margin-top: 100px;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  box-shadow: 0.5rem 0.5rem 3rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding-right: 20px;
+  padding-left: 25px;
+  font-family: 'Montserrat';
+
+  & h5 {
+    font-weight: 600;
+  }
+
+  & hr {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.fields-wrapper-container {
+  display: flex;
+  margin-bottom: 30px;
+
+  & div {
+    width: 250px;
+  }
+}
+
+.divider-style {
+
+}
+
+.left-field-auto {
+  margin-left: auto;
+}
+
+.bold-table-header {
+  font-weight: 600;
+}
+
+.opaque-field-values {
+  opacity: .5;
+}
+
+.edit-button-style {
+  background-color: #F7436B;
+  margin-left: auto;
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  outline: none !important;
+
+  & i {
+    color: white;
+  }
+}

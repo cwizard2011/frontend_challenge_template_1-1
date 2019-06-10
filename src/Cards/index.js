@@ -5,7 +5,6 @@ import { Card, CardImg, CardBody,
 const Cards = ({
   product_id,
   name,
-  description,
   price,
   discounted_price,
   thumbnail,
@@ -23,17 +22,17 @@ const Cards = ({
       cursor: 'pointer'
       }}
       onClick={() => history.push(`/product/${product_id}`)}
-      className="product-card product-card-link"
+      className="product-card"
       >
     <Card>
       <CardImg top width="100%" src={require(`../assets/product_images/${thumbnail}`)} alt="Card image cap" />
-      <CardBody className="product-card">
+      <CardBody className="product-card-link">
         <CardTitle className="product-card-title" style={{ textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 'bold' }}>{name}</CardTitle>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <CardSubtitle style={{ textDecoration: 'line-through', marginLeft: 15, fontFamily: 'Montserrat' }}>${price}</CardSubtitle>
           <CardSubtitle style={{ fontFamily: 'Montserrat' }}>${discounted_price}</CardSubtitle>
         </div>
-        <div className="product-button"><button className="btn">Add to Cart</button></div>
+        <div className="product-button"><button className="btn" onClick={() => history.push('/cart')}>Add to Cart</button></div>
       </CardBody>
     </Card>
   </div>

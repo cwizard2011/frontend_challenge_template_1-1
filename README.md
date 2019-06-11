@@ -49,7 +49,7 @@
 > $ npm install
 ```
 
-* Once installation is done, start the application by running ```npm start:dev```
+* Once installation is done, start the application by running ```npm start```
 
 ## Running tests
 

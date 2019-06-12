@@ -29,8 +29,16 @@ const Cards = ({
       <CardBody className="product-card-link">
         <CardTitle className="product-card-title" style={{ textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 'bold' }}>{name}</CardTitle>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <CardSubtitle style={{ textDecoration: 'line-through', marginLeft: 15, fontFamily: 'Montserrat' }}>${price}</CardSubtitle>
-          <CardSubtitle style={{ fontFamily: 'Montserrat' }}>${discounted_price}</CardSubtitle>
+          {
+            discounted_price > 0 ? (
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <CardSubtitle style={{ textDecoration: 'line-through', marginLeft: 15, fontFamily: 'Montserrat' }}>${price}</CardSubtitle>
+                <CardSubtitle style={{ fontFamily: 'Montserrat' }}>${discounted_price}</CardSubtitle>
+              </div>
+            ) : (
+              <CardSubtitle style={{ marginLeft: 15, fontFamily: 'Montserrat', display: 'flex', alignContent: 'center' }}>${price}</CardSubtitle>
+            )
+          }
         </div>
         <div className="product-button"><button className="btn" onClick={() => history.push('/cart')}>Add to Cart</button></div>
       </CardBody>

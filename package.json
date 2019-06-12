@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.1.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "enzyme": "^3.9.0",
@@ -21,7 +22,7 @@
     "react-scripts": "3.0.0",
     "react-slick": "^0.24.0",
     "react-star-ratings": "^2.3.0",
-    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^3.0.0",
     "react-test-renderer": "^16.8.6",
     "react-toast-notifications": "^1.4.0",
     "react-toastify": "^5.2.1",

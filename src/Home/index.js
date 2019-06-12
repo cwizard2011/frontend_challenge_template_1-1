@@ -1,5 +1,4 @@
 import React from 'react';
-import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 import { withToastManager } from 'react-toast-notifications';
 import { Emojione } from 'react-emoji-render';
 import Cards from '../Cards';
@@ -12,28 +11,7 @@ import {
 } from '../utils/apiCalls';
 import Filters from '../Filters';
 import Paginate from 'react-paginate';
-import image1 from '../assets/bags.jpg';
-import image2 from '../assets/lines.jpg';
-import image3 from '../assets/dooley.jpg';
 import './style.scss';
-
-const ITEMS = [
-  {
-    src: image1,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    src: image2,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    src: image3,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  }
-]
 
 export class HomePage extends React.Component {
   state = {
@@ -50,7 +28,6 @@ export class HomePage extends React.Component {
     department: '',
     department_id: '',
     category_id: '',
-    activeIndex: 0
   }
 
   async componentDidMount() {
@@ -113,23 +90,6 @@ export class HomePage extends React.Component {
     this.animating = false;
   }
 
-  next = () => {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === ITEMS.length - 1 ? 0 : this.state.activeIndex + 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  previous = () => {
-    if (this.animating) return;
-    const previousIndex = this.state.activeIndex === 0 ? ITEMS.length - 1 : this.state.activeIndex - 1;
-    this.setState({ activeIndex: previousIndex });
-  }
-
-  goToIndex = (newIndex) => {
-    if (this.animating) return;
-    this.setState({ activeIndex: newIndex });
-  }
-
   render() {
     const { history } = this.props;
     const {
@@ -141,19 +101,7 @@ export class HomePage extends React.Component {
       searchedProducts,
       hasSearched,
       department,
-      activeIndex
     } = this.state;
-
-    const slides = ITEMS.map(item => (
-      <CarouselItem
-        onExiting={this.onExiting}
-        onExited={this.onExited}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} className="carousel-style-class" style={{'height': '450px'}} />
-
-      </CarouselItem>
-    ))
 
     return (
       <div>
@@ -166,16 +114,6 @@ export class HomePage extends React.Component {
           department={department}
           setDepartment={this.setDepartment}
           />
-        <Carousel
-          activeIndex={activeIndex}
-          next={this.next}
-          previous={this.previous}
-        >
-          <CarouselIndicators activeIndex={activeIndex} items={ITEMS} onClickHandler={this.goToIndex} />
-          {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-        </Carousel>
         { isLoading && <Spinner /> }
         {!isLoading && <Filters hasSearched={hasSearched} searchedProducts={searchedProducts} filterCategory={this.setCategory} setDepartmentFilter={this.setDepartmentFilter} />}
         {!isLoading && <div className="products-card-wrap" style={{ display: 'flex', flexWrap: 'wrap' }}>

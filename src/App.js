@@ -6,7 +6,6 @@ import Signup from './Signup';
 import Login from './Login';
 import Cart from './Cart';
 import UserInformation from './UserInformation';
-import Checkout from './Checkout';
 import RequireAuth from './utils/RequireAuth';
 import OrderConfirmation from './OrderConfirmation';
 import NotFoundPage from './NotFoundPage';
@@ -29,7 +28,7 @@ function App() {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/cart" component={Cart} />
-            <Route path="/checkout" component={RequireAuth(Checkout)} />
+            <Route path="/checkout" component={RequireAuth(Cart)} />
             <Route path="/confirm" component={RequireAuth(OrderConfirmation)} />
             <Route path="/user" component={RequireAuth(UserProfile)} />
             <Route path="/edit-profile" component={RequireAuth(UserInformation)} />

@@ -4,6 +4,7 @@ import Navbar from '../Navbar';
 import { Table } from 'reactstrap';
 import Spinner from '../Spinner';
 import './styles.scss';
+import CheckoutModal from './CheckoutModal';
 
 export class Cart extends Component {
   state = {
@@ -51,6 +52,15 @@ export class Cart extends Component {
           >
               Back to Shop
             </button>
+            <button
+              data-toggle="modal"
+              data-target="#exampleModalLong"
+              type="button"
+              className="btn btn-primary text-uppercase checkout"
+            >
+              Checkout
+                  </button>
+                  <CheckoutModal />
           </div>
           )}
           {productIncart.length > 0 &&
@@ -159,13 +169,17 @@ export class Cart extends Component {
           </button>
           {isLoggedIn ?
           (
+            <div>
             <button
-              id="btnCheckout"
-              className="cart-checkout-button"
-              onClick={() => history.push('/checkout')}
-            >
+                    data-toggle="modal"
+                    data-target="#exampleModalLong"
+                    type="button"
+                    className="btn btn-block text-uppercase checkout"
+                  >
               Checkout
-            </button>
+                  </button>
+                  <CheckoutModal />
+            </div>
           ) : <p onClick={() => history.push('/login')} className="login-to-checkout">Log in to proceed to checkout</p>}
         </div>}
       </div>

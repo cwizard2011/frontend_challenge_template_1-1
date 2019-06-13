@@ -1,73 +1,29 @@
+/**
+  This component display single product using the product ID
+  To complete this component, you need to implement the following:
+  - Dynamically render single product detail from the backend
+  - Dynamically render product attributes, size and color
+  - Hide review form if user is not logged in and display login message
+  - Hide login message and Display review form if user is logged in
+  - Disable `Add to Cart` button if product is already in the cart
+  - Dynamically render product reviews from the backend
+  - Add functionality to post review
+  - Add functionality to change product size, color and item quantity
+  - Take initiatives to customize this component and add live to the page
+
+  NB: YOU CAN STYLE AND CUSTOMISE THIS PAGE, BUT YOU HAVE TO USE OUR DEFAULT CLASSNAME, IDS AND HTML INPUT NAMES
+*/
 import React, { Component } from 'react';
 import { Input, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import StarRatings from 'react-star-ratings';
-import { withToastManager } from 'react-toast-notifications';
-import moment from 'moment';
 import Spinner from '../Spinner';
 import Navbar from '../Navbar';
 import './styles.scss';
 
 export class SingleProduct extends Component {
   state = {
-    product: {},
-    size: '',
-    quantity: 1,
-    thumbnail: '',
-    color: '',
     isLoading: false,
-    cart_id: '',
-    productIncart: [],
-    total_price: '0.00',
-    totalRating: 0,
-    reviews: [],
-    reviewRating: 4,
-    reviewString: '',
-    nickname: '',
     isModalOpen: false,
-    disableButton: false,
-    isUserLoggedIn: false,
-    disableReviewButton: false,
-    itemsInCartName: []
-  }
-
-  async componentDidMount() {
-   
-  }
-
-  setSize = (size) => {
-    
-  }
-
-  setQuantity = (type) => {
-   
-  }
-
-  changeMainImage = (image) => {
-   
-  }
-
-  setColor = (color) => {
-    
-  }
-
-  addToCart = async () => {
-    
-  }
-
-  setRating = (newRating, name) => {
-    
-  }
-
-  setReview = (event) => {
-   
-  }
-
-  setNickname = (event) => {
-   
-  }
-
-  submitReview = async() => {
-    
   }
 
   toggleModalVisibility = (isModalOpen) => {
@@ -124,27 +80,7 @@ export class SingleProduct extends Component {
 
   render() {
     const {
-      product: {
-        description,
-        image,
-        image_2,
-        price,
-        name
-      },
-      quantity,
-      thumbnail,
-      color,
-      size,
       isLoading,
-      productIncart,
-      total_price,
-      totalRating,
-      reviews,
-      reviewRating,
-      disableButton,
-      isUserLoggedIn,
-      disableReviewButton,
-      itemsInCartName
     } = this.state;
 
     if (isLoading) {
@@ -155,42 +91,38 @@ export class SingleProduct extends Component {
       <div>
         <Navbar
           history={this.props.history}
-          productIncart={productIncart}
-          cartPrice={total_price}
           />
         <div className="single-products-container">
           <div className="image-wrapper-container">
-            {thumbnail && <img
+            <img
               alt=""
-              src={require(`../assets/product_images/${thumbnail}`)}
+              src={require(`../assets/product_images/afghan-flower-thumbnail.gif`)}
               style={{
                 height: 300,
                 width: 300
               }}
-            />}
+            />
             <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 30 }}>
-              {image && <img
+              <img
                 alt=""
-                src={require(`../assets/product_images/${image}`)}
+                src={require(`../assets/product_images/afghan-flower.gif`)}
                 style={{
                   height: 70,
                   width: 70,
                   cursor: 'pointer'
                 }}
                 className="responsive-style-image"
-                onClick={() => this.changeMainImage(image)}
-              />}
-              {image_2 && <img
+              />
+              <img
                 alt=""
-                src={require(`../assets/product_images/${image_2}`)}
+                src={require(`../assets/product_images/afghan-flower-2.gif`)}
                 style={{
                   height: 70,
                   width: 70,
                   cursor: 'pointer'
                 }}
                 className="responsive-style-image"
-                onClick={() => this.changeMainImage(image_2)}
-              />}
+              />
             </div>
           </div>
           <div className="single-product-detail product-details">
@@ -202,7 +134,7 @@ export class SingleProduct extends Component {
             <div>
               <StarRatings
                 numberOfStars={5}
-                rating={Number(totalRating)}
+                rating={3}
                 starRatedColor="#FFA500"
                 starDimension="25px"
                 starSpacing="5px"
@@ -214,59 +146,49 @@ export class SingleProduct extends Component {
               fontWeight: 'bold',
               }}
               className="product-details-title"
-              >{name}</h3>
+              >Afghan Flower</h3>
             <p style={{
               marginTop: 10,
               fontFamily: 'Montserrat',
               fontWeight: 'bold',
               }}
-              >{description}</p>
-            <p style={{ color: 'red', fontWeight: 'bold', fontFamily: 'Montserrat' }}>${price}</p>
+              >This product is the best Italian product in  town</p>
+            <p style={{ color: 'red', fontWeight: 'bold', fontFamily: 'Montserrat' }}>$ 18</p>
             <div>
               <p style={{ fontFamily: 'Montserrat' }}>Color</p>
               <div style={{ display: 'flex' }}>
                 <div style={{
                   backgroundColor: 'red',
-                  boxShadow: color === 'red' ? '0 0px 2px 4px rgb(16,114,181)' : '',
                 }}
                 className="color-choice product-details-color"
-                  onClick={() => this.setColor('red')}
                 />
                 <div
                   style={{
                   backgroundColor: 'blue',
                   marginLeft: 15,
-                  boxShadow: color === 'blue' ? '0 0px 2px 4px rgb(16,114,181)' : '',
                 }}
                   className="color-choice product-details-color"
-                  onClick={() => this.setColor('blue')}
                 />
                 <div
                   style={{
                   backgroundColor: 'green',
                   marginLeft: 15,
-                  boxShadow: color === 'green' ? '0 0px 2px 4px rgb(16,114,181)' : '',
                 }}
                   className="color-choice product-details-color"
-                  onClick={() => this.setColor('green')}
                 />
                 <div
                   style={{
                   backgroundColor: 'orange',
                   marginLeft: 15,
-                  boxShadow: color === 'orange' ? '0 0px 2px 4px rgb(16,114,181)' : '',
                 }}
                   className="color-choice product-details-color"
-                  onClick={() => this.setColor('orange')}
                 />
                 <div
                   style={{
                   backgroundColor: 'purple',
                   marginLeft: 15,
-                  boxShadow: color === 'purple' ? '0 0px 2px 4px rgb(16,114,181)' : '',
                 }}
                   className="color-choice product-details-color"
-                  onClick={() => this.setColor('purple')}
                 />
               </div>
             </div>
@@ -274,39 +196,34 @@ export class SingleProduct extends Component {
               <p style={{ fontFamily: 'Montserrat' }}>Size</p>
               <div style={{ display: 'flex' }}>
                 <p style={{
-                  backgroundColor: size === 'S' ? 'red' : '#DCDCDC',
-                  color: size === 'S' ? '#FFF' : 'black',
+                  backgroundColor: '#DCDCDC',
+                  color: 'black',
                 }}
                 className="size-style-left product-details-size"
-                onClick={() => this.setSize('S')}
                 >S</p>
                 <p style={{
-                  backgroundColor: size === 'M' ? 'red' : '#DCDCDC',
-                  color: size === 'M' ? '#FFF' : 'black',
+                  backgroundColor: '#DCDCDC',
+                  color: 'black',
                 }}
                 className="size-style product-details-size"
-                onClick={() => this.setSize('M')}
                 >M</p>
                 <p style={{
-                  backgroundColor: size === 'L' ? 'red' : '#DCDCDC',
-                  color: size === 'L' ? '#FFF' : 'black',
+                  backgroundColor: '#DCDCDC',
+                  color: 'black',
                 }}
                 className="size-style product-details-size"
-                onClick={() => this.setSize('L')}
                 >L</p>
                 <p style={{
-                  backgroundColor: size === 'XL' ? 'red' : '#DCDCDC',
-                  color: size === 'XL' ? '#FFF' : 'black',
+                  backgroundColor: '#DCDCDC',
+                  color: 'black',
                 }}
                 className="size-style product-details-size"
-                onClick={() => this.setSize('XL')}
                 >XL</p>
                 <p style={{
-                  backgroundColor: size === 'XXL' ? 'red' : '#DCDCDC',
-                  color: size === 'XXL' ? '#FFF' : 'black',
+                  backgroundColor: '#DCDCDC',
+                  color: 'black',
                 }}
                 className="size-style product-details-size"
-                onClick={() => this.setSize('XXL')}
                 >XXL</p>
               </div>
             </div>
@@ -325,7 +242,6 @@ export class SingleProduct extends Component {
                   <p
                     className="decrease-quantity"
                     style={{ marginTop: -3 }}
-                    onClick={() => this.setQuantity('decrement')}
                   >
                     -
                   </p>
@@ -343,7 +259,7 @@ export class SingleProduct extends Component {
                   fontFamily: 'Montserrat'
                 }}
                 name="product-details-quantity"
-                >{quantity}</p>
+                >1</p>
                 <div style={{
                   width: 20,
                   height: 20,
@@ -356,7 +272,6 @@ export class SingleProduct extends Component {
                   <p
                     className="increase-quantity"
                     style={{ marginTop: -3 }}
-                    onClick={() => this.setQuantity('increment')}
                   >
                     +
                   </p>
@@ -367,24 +282,20 @@ export class SingleProduct extends Component {
               <button
                 style={{
                   height: 40,
-                  width: itemsInCartName.includes(name) ? 200 : 150,
-                  backgroundColor: disableButton || itemsInCartName.includes(name) ? 'gray' : '#f7436b',
+                  width: 150,
+                  backgroundColor: '#f7436b',
                   borderRadius: 20,
                   color: '#FFF',
-                  borderColor: itemsInCartName.includes(name) || disableButton ? 'gray' : '#f7436b',
+                  borderColor: '#f7436b',
                   boxShadow: '0.5rem 0.5rem 3rem rgba(0,0,0,0.2)',
                   fontFamily: 'Montserrat',
-                  cursor: disableButton || itemsInCartName.includes(name) ? 'not-allowed' : 'pointer'
+                  cursor:  'pointer'
                 }}
-                onClick={this.addToCart}
-                disabled={disableButton}
+                onClick={() => this.setState({ isModalOpen: true })}
                 id="btnCart"
                 className="product-button"
               >
-                {disableButton ? '....'
-                  : !disableButton && itemsInCartName.includes(name) ? 'Item added to cart'
-                  : 'Add to cart'
-                  }
+                Add to cart
               </button>
               <div style={{
                 marginLeft: 'auto',
@@ -409,14 +320,12 @@ export class SingleProduct extends Component {
             overflowY: 'scroll',
           }}>
             <h5 style={{ marginBottom: 20, fontFamily: 'Montserrat' }}>Product Reviews</h5>
-            {
-              reviews.map((review, index) => (
-                <div key={index} style={{ display: 'flex' }}>
+                <div style={{ display: 'flex' }}>
                   <div>
                     <div className="review-star">
                     <StarRatings
                       numberOfStars={5}
-                      rating={Number(review.rating)}
+                      rating={4}
                       starRatedColor="#FFA500"
                       starDimension="15px"
                       starSpacing="5px"
@@ -426,21 +335,20 @@ export class SingleProduct extends Component {
                       marginTop: 20,
                       fontWeight: 'bold',
                       fontFamily: 'Montserrat'
-                    }}>{review.name}</p>
+                    }}>Peter Charles</p>
                     <p style={{
                       marginTop: -15,
                       fontSize: 12,
                       color: '#A9A9A9',
                       fontFamily: 'Montserrat'
-                    }}>{moment(review.created_on).startOf('day').fromNow()}</p>
+                    }}>2 days ago</p>
                   </div>
-                  <p className="review-text" style={{ marginLeft: 200, marginTop: 5, fontFamily: 'Montserrat' }}>{review.review}</p>
+                  <p className="review-text" style={{ marginLeft: 200, marginTop: 5, fontFamily: 'Montserrat' }}>
+                    This product is nice and awesome
+                  </p>
                 </div>
-              ))
-            }
           </div>
           <hr />
-            {isUserLoggedIn && (
               <div id="review">
                 <h5 style={{ fontFamily: 'Montserrat', marginTop: 25 }}>Add a Review</h5>
                 <div className="star-wrapper">
@@ -448,8 +356,6 @@ export class SingleProduct extends Component {
                   <input
                     type="text"
                     name="nickname"
-                    value={this.state.nickname}
-                    onChange={this.setNickname}
                     className="input-text-style"
                   />
                 </div>
@@ -459,8 +365,6 @@ export class SingleProduct extends Component {
                     type="textarea"
                     name="text"
                     id="text"
-                    onChange={this.setReview}
-                    value={this.state.reviewString}
                     className="input-text-box-style"
                   />
                 </div>
@@ -469,30 +373,27 @@ export class SingleProduct extends Component {
                   <div className="star-rating-style">
                     <StarRatings
                       numberOfStars={5}
-                      rating={Number(reviewRating)}
+                      rating={0}
                       starRatedColor="#FFA500"
                       starHoverColor="#FFA500"
                       starDimension="20px"
                       starSpacing="5px"
                       name="review"
-                      changeRating={this.setRating}
                     />
                   </div>
                 </div>
                 <button style={{
-                  backgroundColor: disableReviewButton ? 'gray' : '#f7436b',
+                  backgroundColor: '#f7436b',
                   boxShadow: '0.5rem 0.5rem 3rem rgba(0,0,0,0.2)',
-                  cursor: disableReviewButton ? 'not-allowed' : 'pointer'
+                  cursor: 'pointer'
                 }}
                 className="button-style-review"
                 id="addReview"
-                onClick={this.submitReview}
                 >
-                  {disableReviewButton ? '.....' : 'Submit'}
+                  Submit
                 </button>
             </div>
-          )}
-          {!isUserLoggedIn && <p className="not-logged-in">You need to be logged in to post reviews. <span onClick={() => this.props.history.push('/login')} className="log-in-link">Log in now</span></p>}
+           <p className="not-logged-in">You need to be logged in to post reviews. <span onClick={() => this.props.history.push('/login')} className="log-in-link">Log in now</span></p>
           {this.renderModal()}
         </div>
       </div>
@@ -500,6 +401,4 @@ export class SingleProduct extends Component {
   }
 }
 
-const SingleProductWithToast = withToastManager(SingleProduct);
-
-export default SingleProductWithToast;
+export default SingleProduct;

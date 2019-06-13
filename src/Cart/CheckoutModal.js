@@ -1,7 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import CheckoutStepper from './CheckoutStepper';
+/**
+  The Checkout modal display the checkout stepper on the Cart page
+  This modal should only be displayed if a user is authenticated
+  You can customise everything in this file including classNames, IDs and names, no restriction
+  to what can be modified in this file for as long as the app works as expected
+*/
 
+import React from 'react';
+import CheckoutStepper from './CheckoutStepper';
 
 
 /**
@@ -9,38 +14,6 @@ import CheckoutStepper from './CheckoutStepper';
    * @param {*} event - form event
    */
 export class CheckoutModal extends React.Component {
-  state = {
-    regions: null,
-    countryList: null,
-    fullname: '',
-    address1: '',
-    address2: '',
-    city: '',
-    states: '',
-    zipCode: '',
-    country: '',
-    shippingId: '',
-    shippingType: '',
-    shippingRegionId: '',
-    shippings: null,
-    errors: {},
-    error: {},
-    update: false,
-    payed: false,
-  };
-
-  componentDidMount = () => {
-  }
-
-  /**
-     *
-     * @param {*} prevProps previous props
-    * @param {*} prevState previous state
-    * @returns {*} Updated cart object
-    */
-   componentDidUpdate = (prevProps, prevState) => {
-  
-   }
 
   /**
    * @description Render the JSX template
@@ -77,16 +50,6 @@ export class CheckoutModal extends React.Component {
     );
   }
 }
-
-CheckoutModal.propTypes = {
-  hideModalCheckout: PropTypes.func,
-  getUserInfo: PropTypes.func,
-  getCountries: PropTypes.func,
-  getRegions: PropTypes.func,
-  updateProfile: PropTypes.func,
-  handleToken: PropTypes.func,
-  cart: PropTypes.shape({})
-};
 
 
 export default CheckoutModal;

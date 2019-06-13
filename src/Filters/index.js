@@ -1,3 +1,11 @@
+/**
+  This component is meant to display filter department, filter by category on the landing page
+  We use an array to display all the lists of department and categories, you are to fix the following
+  - Dynamically render Categories and departments from backend
+  - Style to suit your purpose, but do not change the default IDs, ClassNames and HTML INPUT names
+  - Filter by Category should be hidden by default
+  - Category for a selected department should be displayed in filter by category when a user select a department
+ */
 import React, { Component } from 'react';
 import { Collapse, FormGroup, Form } from 'reactstrap';
 import RadioButton from '../RadioButton';
@@ -7,35 +15,12 @@ const CATEGORIES = ['French', 'Italian', 'Irish', 'Animal', 'Flower', 'Christmas
 const DEPARTMENTS = ['Regional', 'Nature', 'Seasonal'];
 
 class Filter extends Component {
-  state = {
-    collapseDepartment: false,
-    collapseCategory: false,
-    collapseTextDepartment: 'Filter by Department',
-    collapseTextCategories: 'Filter by Categories'
-  }
-
-  toggleCategory = () => {
-   
-  }
-
-  toggle = (name) => {
-
-  }
-
-  toggleDepartment = () => {
-    
-  }
 
   render() {
-    const { collapseTextCategories, collapseTextDepartment } = this.state;
-    const { searchedProducts, hasSearched } = this.props;
     return (
       <div className="filter-cards-container">
         <div>
           <p
-
-            disabled={searchedProducts && hasSearched}
-            onClick={() => this.toggle('category')}
             className={"filter-cards-button"}
             >
             Filter by Category
@@ -48,9 +33,9 @@ class Filter extends Component {
                   <RadioButton
                     labelText={category}
                     name="category"
-                    toggleClick={this.toggleCategory}
-                    index={index}
-                    categoryText={collapseTextCategories}
+                    className="category"
+                    toggleClick={() => console.log(`${category} is clicked`)}
+                    key={index}
                     />
                 ))
               }
@@ -60,22 +45,20 @@ class Filter extends Component {
         </div>
         <div>
           <p
-            disabled={searchedProducts && hasSearched}
-            onClick={() => this.toggle('department')}
             className={"filter-cards-button"}>
             Filter by Department
           </p>
           <Collapse isOpen={true}>
           <Form>
-              <FormGroup tag="fieldset" className="department">
+              <FormGroup tag="fieldset" className="departments">
               {
                 DEPARTMENTS.map((department, index) => (
                   <RadioButton
                     labelText={department}
                     name="department"
-                    toggleClick={this.toggleDepartment}
-                    index={index}
-                    departmentText={collapseTextDepartment}
+                    className="department"
+                    toggleClick={() => console.log(`${department} is clicked`)}
+                    key={index}
                   />
                 ))
               }

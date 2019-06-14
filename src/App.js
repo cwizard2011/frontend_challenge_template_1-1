@@ -5,15 +5,14 @@ import SingleProduct from './SingleProduct';
 import Signup from './Signup';
 import Login from './Login';
 import Cart from './Cart';
-import UserInformation from './UserInformation';
-import RequireAuth from './utils/RequireAuth';
-import OrderConfirmation from './OrderConfirmation';
+import EditUserProfile from './EditUserProfile/Index';
 import NotFoundPage from './NotFoundPage';
 import UserProfile from './UserProfile';
 import { toast } from 'react-toastify';
 import { ToastProvider } from 'react-toast-notifications';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 
 toast.configure();
 
@@ -28,10 +27,9 @@ function App() {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/cart" component={Cart} />
-            <Route path="/checkout" component={RequireAuth(Cart)} />
-            <Route path="/confirm" component={RequireAuth(OrderConfirmation)} />
-            <Route path="/user" component={RequireAuth(UserProfile)} />
-            <Route path="/edit-profile" component={RequireAuth(UserInformation)} />
+            <Route path="/checkout" component={Cart} />
+            <Route path="/user" component={UserProfile} />
+            <Route path="/edit-profile" component={EditUserProfile} />
             <Route component={NotFoundPage} />
           </Switch>
         </BrowserRouter>

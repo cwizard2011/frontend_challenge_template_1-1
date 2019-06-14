@@ -1,3 +1,8 @@
+/**
+  This Component displays the checkout stepper on the checkout modal in Cart page
+  You can modify and style the component to achieve your goal, BUT ENSURE YOU USE OUR DEFAULT
+  HTML ID and CLASSNAMES
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -42,8 +47,11 @@ class CheckoutStepper extends React.Component {
     isLoading: false,
   }
 
-  getSteps = () => ['Delivery', 'Confirmation', 'Payment', 'Finish']
+  getSteps = () => ['Delivery', 'Confirmation', 'Payment', 'Finish'] // step array
 
+  /**
+    Control individual step content
+  */
   getStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
@@ -57,8 +65,7 @@ class CheckoutStepper extends React.Component {
         );
       case 2:
         return (
-          <Payments
-          />
+          <Payments />
         );
       default:
         return 'Unknown stepIndex';

@@ -1,3 +1,7 @@
+/**
+  This component display the order confirmation message after payment,
+  You can customize things on this page, but the the default HTML IDs should be left untouched
+*/
 import React, { Component } from 'react';
 
 /**

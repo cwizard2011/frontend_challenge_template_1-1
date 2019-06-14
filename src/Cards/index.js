@@ -1,3 +1,10 @@
+/**
+  This component takes product_id, name, price, discounted_price, thumbnail, and history as props
+  It should display a card of individual product
+  You can modify of style the component as it suits you, but ensure you didn't change our default HTML ID,
+  classNames and names
+  - Card should display all products, filtered products or searched product(s)
+*/
 import React from 'react';
 import { Card, CardImg, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';

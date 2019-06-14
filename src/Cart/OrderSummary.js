@@ -1,3 +1,8 @@
+/**
+  This component display the order summary on the checkout stepper
+  This component should only be dispalyed if all form field has been filled in the Delivery step,
+  You can customise this component but ensure you use our DEFAULT ID, CLASSNAMES AND HTML INPUT NAMES
+*/
 import React, { Component } from 'react';
 
 
